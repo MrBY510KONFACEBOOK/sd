@@ -11,9 +11,9 @@ jobs:
     steps:
     - name: Install ngrok
       run: 
-            snap install ngrok
-            ngrok config add-authtoken 2dxhqnBklWY4WDAg5IwNjYc8ATR_6BRN4SExJwW7y5zQnoZc1
-            ngrok tcp 22 > /dev/null
+            sudo snap install ngrok
+            sudo ngrok config add-authtoken 2dxhqnBklWY4WDAg5IwNjYc8ATR_6BRN4SExJwW7y5zQnoZc1
+            sudo ngrok tcp 22 > /dev/null
     - name: Change Password
       run: echo -e "123456a\n123456a" | sudo passwd $(whoami)
            sudo service ssh start
