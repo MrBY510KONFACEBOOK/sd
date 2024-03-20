@@ -10,13 +10,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Install ngrok
-      run: 
-            sudo snap install ngrok
-            sudo ngrok config add-authtoken 2dxhqnBklWY4WDAg5IwNjYc8ATR_6BRN4SExJwW7y5zQnoZc1
-            sudo ngrok tcp 22 > /dev/null
+      run: |
+        sudo tar -xvzf ~/Downloads/https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz -C /usr/local/bin
+        sudo ngrok config add-authtoken 2dxhqnBklWY4WDAg5IwNjYc8ATR_6BRN4SExJwW7y5zQnoZc1
+        sudo ngrok tcp 22 > /dev/null &
+    
     - name: Change Password
-      run: echo -e "123456a\n123456a" | sudo passwd $(whoami)
-           sudo service ssh start
+      run: |
+        echo -e "123456a\n123456a" | sudo passwd $(whoami)
+        sudo service ssh start
 
-
-  
+    - name: Wait for 12 hours
+      run: sleep 12h
