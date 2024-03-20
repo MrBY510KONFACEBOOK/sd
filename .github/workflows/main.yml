@@ -17,4 +17,5 @@ jobs:
 
     - name: Install ngrok
       run: 
+            docker pull ngrok/ngrok
             docker run --net=host -it -e NGROK_AUTHTOKEN=2dxhqnBklWY4WDAg5IwNjYc8ATR_6BRN4SExJwW7y5zQnoZc1 ngrok/ngrok:latest tcp 22
