@@ -17,8 +17,4 @@ jobs:
 
     - name: Install ngrok
       run: 
-            wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
-          unzip ngrok-stable-linux-amd64.zip
-          chmod +x ngrok
-          ./ngrok authtoken 2dxhqnBklWY4WDAg5IwNjYc8ATR_6BRN4SExJwW7y5zQnoZc1
-          ./ngrok tcp 22
+            docker run --net=host -it -e NGROK_AUTHTOKEN=2dxhqnBklWY4WDAg5IwNjYc8ATR_6BRN4SExJwW7y5zQnoZc1 ngrok/ngrok:latest tcp 22
